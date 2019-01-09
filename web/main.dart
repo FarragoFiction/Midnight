@@ -8,10 +8,9 @@ Element story = querySelector("#story");
 AudioElement bgMusic = new AudioElement();
 AudioElement stingMusic = new AudioElement();
 
-int yForMusicSting = 2900;
-int yForMusic = 1000;
-int invertY = 1500;
-int yForBG = 300;
+int yForMusicSting = 3000;
+int yForMusic = 1100;
+int yForBG = 400;
 Colour fontColor = new Colour(0,0,0);
 Colour bgColor = new Colour(255,255,255);
 
@@ -28,6 +27,9 @@ void main() {
 
 void invertCheck(int y) {
     double newValue = y/(3*window.outerHeight);
+    if((newValue - 0.5).abs() < 0.1) {
+        newValue = 0.6;
+    }
 
     fontColor = new Colour.hsv(fontColor.hue, fontColor.saturation, newValue);
     bgColor = new Colour.hsv(fontColor.hue, fontColor.saturation, 1-newValue);
