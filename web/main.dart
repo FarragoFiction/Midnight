@@ -51,7 +51,7 @@ void gradientMusic(int y) {
     }else if(y < yForMusic) {
         bgMusic.pause();
     }
-    bgMusic.volume = y/400000.0;
+    bgMusic.volume = y/50000.0;
 }
 
 void musicSting(int y) {
