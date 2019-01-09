@@ -1,24 +1,46 @@
 import 'dart:html';
+import "package:CommonLib/Colours.dart";
 
-Element falseBG = querySelector("#false-background");
+Element falseBG1 = querySelector(".false-background1");
+Element falseBG2 = querySelector(".false-background2");
+Element story = querySelector("#story");
+
 AudioElement bgMusic = new AudioElement();
 AudioElement stingMusic = new AudioElement();
 
 int yForMusicSting = 2900;
 int yForMusic = 1000;
+int invertY = 1500;
 int yForBG = 300;
+Colour fontColor = new Colour(0,0,0);
+Colour bgColor = new Colour(255,255,255);
+
 void main() {
     window.onScroll.listen((Event event){
         num ypos = window.scrollY; //pixels the site is scrolled down
         gradientBG(ypos);
         gradientMusic(ypos);
         musicSting(ypos);
+        invertCheck(ypos);
 
     });
 }
 
-void gradientBG(int y) {
+void invertCheck(int y) {
+    double newValue = y/(3*window.outerHeight);
 
+    fontColor = new Colour.hsv(fontColor.hue, fontColor.saturation, newValue);
+    bgColor = new Colour.hsv(fontColor.hue, fontColor.saturation, 1-newValue);
+    story.style.color =fontColor.toStyleString();
+    story.style.backgroundColor = bgColor.toStyleString();
+}
+
+void gradientBG(int y) {
+    if(y > yForBG) {
+        falseBG2.style.backgroundImage = "url(images/black-and-white-dark-marble-908283.jpg";
+    }
+    double opacity = y/(3*window.outerHeight);
+    falseBG2.style.opacity = "${opacity}";
 }
 
 void gradientMusic(int y) {

@@ -9,7 +9,6 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'black_chancery', sans-serif;
-  background: url(images/background-canvas-close-up-1020320.jpg);
 }
 
 .fancyBig{
@@ -27,7 +26,19 @@ html, body {
   	margin-top:300px;
 }
 
-.false-background {
+.false-background1 {
+  content: "";
+  background: url(images/background-canvas-close-up-1020320.jpg);
+  opacity: 0.9;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+.false-background2 {
   content: "";
   background: url(images/background-canvas-close-up-1020320.jpg);
   opacity: 0.9;
